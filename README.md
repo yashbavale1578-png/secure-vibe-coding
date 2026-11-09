@@ -21,32 +21,91 @@ This project consolidates the security, privacy, accessibility, compliance, and 
 - Privacy, data rights, consent, legal-readiness questions, accessibility, ethical design, website quality, SEO metadata, and launch readiness.
 - Four modes: `AUDIT`, `FIX`, `VERIFY`, and `FULL`.
 
-## Quick start
+## Installation
 
-1. Extract the ZIP.
-2. Install the skill folder into a supported Agent Skills location for your agent.
-3. Ask your agent to use `secure-vibe-coding` in `AUDIT` mode first.
-4. Review the scope and findings.
-5. Approve specific changes before using `FIX` or `FULL`.
+Install `secure-vibe-coding` into your AI agent's skills directory. Keep the folder name as `secure-vibe-coding` to match the skill metadata.
 
-Example prompts:
+### Option 1: Project-Level Installation (Recommended for Teams)
 
-- "Use secure-vibe-coding in AUDIT mode on this repository. Do not modify files."
-- "Threat-model the authentication, payment, and AI tool flows."
-- "Review the Supabase RLS policies and verify server-side authorization."
-- "Use FIX mode to remediate finding SEC-004 only. Show the plan first."
-- "Use VERIFY mode to retest the fixes from the last report."
+Install directly into your repository so anyone collaborating with an AI agent inherits the security skill:
 
-## Install
+```bash
+# For Claude Code
+mkdir -p .claude/skills
+git clone https://github.com/yashbavale1578-png/secure-vibe-coding.git .claude/skills/secure-vibe-coding
 
-The Agent Skills format is designed to be portable, but host discovery and installation paths vary. Follow the current installation instructions for your agent.
+# For Google Antigravity / Gemini CLI
+mkdir -p .gemini/skills
+git clone https://github.com/yashbavale1578-png/secure-vibe-coding.git .gemini/skills/secure-vibe-coding
 
-Common approaches:
-- **Claude Code:** place the skill directory in the project's `.claude/skills/` directory or the user-level skills directory supported by your installed version.
-- **Codex:** place the skill in the skills directory supported by your Codex environment; check the current Codex documentation for discovery paths.
-- **Gemini CLI / Antigravity / Cursor / other clients:** use the host's current Agent Skills support and configured skill directory. Do not assume every client supports every optional feature identically.
+# For Cursor / Codex / Custom Agents
+git clone https://github.com/yashbavale1578-png/secure-vibe-coding.git .skills/secure-vibe-coding
+```
 
-Keep the directory name `secure-vibe-coding` to match the `name` field in `SKILL.md`.
+*(Windows PowerShell)*:
+```powershell
+# Claude Code
+New-Item -ItemType Directory -Force -Path ".claude\skills"
+git clone https://github.com/yashbavale1578-png/secure-vibe-coding.git .claude\skills\secure-vibe-coding
+
+# Google Antigravity / Gemini CLI
+New-Item -ItemType Directory -Force -Path ".gemini\skills"
+git clone https://github.com/yashbavale1578-png/secure-vibe-coding.git .gemini\skills\secure-vibe-coding
+```
+
+---
+
+### Option 2: Global Installation (Available Across All Projects)
+
+Install globally in your user home directory so the skill is available in every project you work on:
+
+#### macOS / Linux
+```bash
+# Claude Code (global)
+git clone https://github.com/yashbavale1578-png/secure-vibe-coding.git ~/.claude/skills/secure-vibe-coding
+
+# Google Antigravity (global)
+git clone https://github.com/yashbavale1578-png/secure-vibe-coding.git ~/.gemini/antigravity/skills/secure-vibe-coding
+```
+
+#### Windows (PowerShell)
+```powershell
+# Claude Code (global)
+git clone https://github.com/yashbavale1578-png/secure-vibe-coding.git "$HOME\.claude\skills\secure-vibe-coding"
+
+# Google Antigravity (global)
+git clone https://github.com/yashbavale1578-png/secure-vibe-coding.git "$HOME\.gemini\antigravity\skills\secure-vibe-coding"
+```
+
+---
+
+## Ready-to-Use Prompts
+
+Copy and paste these prompts directly into your AI agent chat:
+
+### 🛡️ 1. Full Security Audit (Safe & Read-Only)
+> *"Use `secure-vibe-coding` in `AUDIT` mode on this repository. Perform a complete passive security review across authentication, authorization, data validation, and secrets. Do not modify any files, and output a prioritized findings report."*
+
+### 🚀 2. Pre-Launch Readiness & Attack Surface Review
+> *"We are preparing to launch to production. Activate `secure-vibe-coding` in `AUDIT` mode to review our public attack surface, CORS, CSP headers, rate-limiting, and error-handling leakage. Give me a launch readiness scorecard."*
+
+### 🔐 3. Authentication, RBAC & Database Security (e.g. Supabase / Postgres / Firebase)
+> *"Use `secure-vibe-coding` to audit our database access layer, Row Level Security (RLS) policies, session management, and server-side authorization checks. Flag any multi-tenant leaks or missing tenant filters."*
+
+### 🤖 4. AI / LLM Integration & Prompt Injection Defense
+> *"Use `secure-vibe-coding` to threat-model our LLM integrations and agent tool definitions. Check for prompt injection vectors, untrusted input feeding into system prompts, model data leakage, and excessive tool permissions."*
+
+### 💳 5. Payments, Webhooks & Idempotency Audit (e.g. Stripe / Razorpay)
+> *"Audit our payment and webhook implementation with `secure-vibe-coding`. Specifically verify webhook signature validation, idempotency key handling, replay protection, and race conditions in fulfillment."*
+
+### 📦 6. Secret Leakage & Supply-Chain Scan
+> *"Run `secure-vibe-coding` local audit utilities on this codebase to inspect dependencies, detect exposed API keys or tokens, and verify that all production secrets are loaded securely from environment variables."*
+
+### 🛠️ 7. Targeted Fix Mode (Remediation)
+> *"Use `secure-vibe-coding` in `FIX` mode to remediate finding `SEC-002` (missing CSRF validation on API routes). Present the implementation plan and diff for approval before making file changes."*
+
+### ✅ 8. Verification & Retesting
+> *"Use `secure-vibe-coding` in `VERIFY` mode to test and confirm the security patches applied for `SEC-002`. Verify that the attack vector is closed and no functional regressions were introduced."*
 
 ## Repository layout
 

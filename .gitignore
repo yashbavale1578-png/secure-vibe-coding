@@ -1,0 +1,18 @@
+# Reports and local outputs
+audit.json
+audit.md
+*.audit.json
+*.audit.md
+
+# Secrets and environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Node
+node_modules/
+npm-debug.log*
